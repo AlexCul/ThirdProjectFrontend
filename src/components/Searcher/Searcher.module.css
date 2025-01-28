@@ -1,0 +1,56 @@
+.searcher {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 300px;
+  background-color: #28282866;
+  transition: 0.3s width ease-in-out;
+  pointer-events: none;
+}
+
+.searcher > .ui {
+    left: 300px;
+    pointer-events: all;
+    height: 100%;
+    width: 397px;
+    background-color: white;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    transition: 0.3s left ease-in-out;
+    z-index: 1;
+    box-shadow: 4px 0px 24px 0px #00000026;
+    border-right: 1px solid #DBDBDB;
+    padding-left: 24px;
+    padding-top: 16px;
+}
+
+.searcher > .ui > h3 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.searcher > .ui > input {
+    margin-top: 40px;
+    background: #EFEFEF;
+    color: #737373;
+    padding: 16px 10px;
+    border-radius: 8px;
+    border: none;
+    width: 364px;
+    font-size: 16px;
+    outline: none;
+}
+
+.searcher > .ui > .user {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    margin-top: 48px;
+}
+
+.searcher > .ui > .user > img {
+    margin-right: 8px;
+    border-radius: 50%;
+}

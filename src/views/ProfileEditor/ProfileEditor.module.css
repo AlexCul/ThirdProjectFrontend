@@ -1,0 +1,75 @@
+.editor {
+    margin-left: 167px;
+    margin-top: 48px;
+}
+
+.editor > h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.editor > .avatar {
+    border-radius: 20px;
+    background-color: #efefef;
+    display: flex;
+    padding: 16px;
+    width: 610px;
+    justify-content: space-between;
+    margin-top: 44px;
+    align-items: center;
+}
+
+.editor > .avatar > button {
+    height: 32px;
+    width: 115px;
+}
+
+.editor > .avatar > .info {
+    display: flex;
+}
+
+.editor > .avatar > .info > img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.editor > .avatar > .info > .text > h5 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.editor > .avatar > .info > .text > p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #737373;
+}
+
+.editor > input[type="text"] {
+    width: 610px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid #DBDBDB;
+    margin-top: 8px;
+    padding-left: 24px;
+}
+
+.editor > img {
+    position: absolute;
+    padding-left: 8px;
+    padding-top: 24px;
+}
+
+.editor > textarea {
+    min-width: 610px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid #DBDBDB;
+    margin-top: 8px;
+    padding-left: 16px;
+}
