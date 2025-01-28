@@ -54,7 +54,7 @@ export default function ProfileEditor() {
         <>
         <div className="content">
             <NavBar />
-            <form className={styles.editor}>
+            <form className={styles.editor} onSubmit={handleSubmit((user) => {}) }>
                 <h3>Edit profile</h3>
                 <div className={styles.avatar}>
                     <div className={styles.info}>
@@ -73,7 +73,7 @@ export default function ProfileEditor() {
                 <img src={Link} alt="" />
                 <input type="text" { ...register("website", { value: data.userByToken.website || "" }) } style={{color: "#00376B",}} />
                 <h3>About</h3>
-                <textarea { ...register("description", {value: data.userByToken.description || ""}) }></textarea>
+                <textarea { ...register("description", {value: data.userByToken.description || ""}) }></textarea><br />
                 <button type="submit">Save</button>
             </form>
         </div>
