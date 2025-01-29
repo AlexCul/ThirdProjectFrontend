@@ -51,10 +51,10 @@ export default function NavBar() {
             <img src={Logo} alt="logo" />
             <a href="/"><img src={Home} alt="" /> Home</a>
             <a onClick={() => setShowSearcher((prev) => !prev)}><img src={Search} alt="" /> Search</a>
-            <a href=""><img src={Add} alt="" /> Create</a>
+            <a href="/post/creator"><img src={Add} alt="" /> Create</a>
             <a onClick={() => {}}><img src={Heart} alt="" /> Notifications</a>
             <a href="/explore"><img src={Explore} alt="" /> Explore</a>
-            <a href={`/profile/${nickname}`}><img src={avatar} alt="pr" /> Profile</a>
+            <a href={`/profile/${nickname}`} className={styles.profile}><img src={avatar} alt="pr" /> Profile</a>
             { showSearcher && <Searcher style={{ display: "block" }} /> }
         </nav>
     );

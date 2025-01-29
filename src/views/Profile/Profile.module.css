@@ -7,6 +7,7 @@
 .user {
     display: flex;
     margin-top: 30px;
+    margin-left: 200px;
 }
 
 .user > img {
@@ -21,6 +22,12 @@
 }
 
 .user > .info > a {
+    text-decoration: none;
+    color: #00376B;
+    font-size: 14px;
+}
+
+.user > .info > .nickname {
     margin-right: 24px;
     text-decoration: none;
     color: black;

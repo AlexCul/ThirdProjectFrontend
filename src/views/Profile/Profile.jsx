@@ -9,7 +9,9 @@ import PostCover from "/src/components/PostCover/PostCover.jsx";
 
 import Link from "/src/assets/images/icons/link.svg";
 
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
+
+import { useState } from "react";
 
 import useUserStore from "/src/stores/user.js";
 
@@ -45,6 +47,17 @@ query ($token: String!) {
     userByToken(token: $token) {
         id
     }
+}
+`;
+
+const followMutation = gql`
+mutation ($token: String!, $toUser: ID!) {
+  follow(token: $token, toUser: $toUser)
+}
+`;
+const unfollowMutation = gql`
+mutation ($token: String!, $fromUser: ID!) {
+  unfollow(token: $token, fromUser: $fromUser)
 }
 `;
 
@@ -86,12 +99,14 @@ export default function Profile() {
     if (!userId) return <p>Profile not found</p>;
     if (!dataJwt) return <p>Not logged in</p>;
 
-    console.log(jwt);
-    console.log("dataJwt:", dataJwt);
+    console.log(dataProfile.user.posts);
 
     const handleEdit = () => {
         navigate(`/profile/${dataProfile.user.nickname}/edit`);
-    }
+    };
+    const handleFollow = () => {
+        
+    };
 
     return (
         <>
@@ -100,7 +115,7 @@ export default function Profile() {
                 <div className={styles.user}>
                     <img src={dataProfile.user.avatar?.base64 || ""} alt="ps" />
                     <div className={styles.info}>
-                        <a href="#">{dataProfile.user.nickname}</a>
+                        <a href="#" className={styles.nickname}>{dataProfile.user.nickname}</a>
                         {
                             dataJwt.userByToken.id === userId
                             ? <Button onClick={handleEdit} type="secondary" text="Edit profile" style={{
@@ -127,9 +142,11 @@ export default function Profile() {
                     </div>
                 </div>
             </div>
+            <div>
             { dataProfile.user.posts.map(post => (
                 <PostCover post={post} key={post.id} />
             )) }
+            </div>
             <Footer />
         </>
     );

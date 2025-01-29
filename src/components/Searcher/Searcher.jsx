@@ -12,7 +12,6 @@ query ($nickname: String!) {
         avatar {
             base64
         }
-        id
     }
 }
 `;
@@ -38,10 +37,9 @@ export default function Searcher({
         searchResult = <p>Error: {error.message}</p>;
     } else if (data && data.userByNickname) {
         const avatar = data.userByNickname.avatar?.base64 || null;
-        const id = data.userByNickname.id;
 
         searchResult = (
-            <a href={`/profile/${id}`} className={styles.user}>
+            <a href={`/profile/${nickname}`} className={styles.user}>
                 <img src={avatar} alt="us" />
                 <p> <b>{nickname}</b></p>
             </a>
