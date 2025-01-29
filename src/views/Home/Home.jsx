@@ -9,47 +9,43 @@ import PostCover from "/src/components/PostCover/PostCover.jsx";
 import { gql, useQuery } from "@apollo/client";
 
 const postsQuery = gql`
-{
-  randomPosts(count: 100) {
-    media {
-      base64
-    }
-    id
-    likes {
-      likedBy {
-        id
+  {
+    randomPosts(count: 100) {
+      media {
+        base64
       }
-    }
-    owner
-    comments {
-      content
-      writtenBy {
-        id
+      id
+      likes {
+        likedBy {
+          id
+        }
+      }
+      owner
+      comments {
+        content
+        writtenBy {
+          id
+        }
       }
     }
   }
-}
 `;
 
 export default function Home() {
-    const {
-        loading,
-        error,
-        data,
-    } = useQuery(postsQuery);
+  const { loading, error, data } = useQuery(postsQuery);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: ${error.message}</p>
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: ${error.message}</p>;
 
-    return (
-        <>
-        <div className="content">
-            <NavBar />
-            { data.randomPosts.map(post => (
-                <PostCover post={post} key={post.id} />
-            )) }
-        </div>
-        <Footer />
-        </>
-    );
+  return (
+    <>
+      <div className="content">
+        <NavBar />
+        {data.randomPosts.map((post) => (
+          <PostCover post={post} key={post.id} />
+        ))}
+      </div>
+      <Footer />
+    </>
+  );
 }

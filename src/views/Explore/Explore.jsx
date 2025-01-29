@@ -9,34 +9,34 @@ import { gql, useQuery } from "@apollo/client";
 import useUserStore from "/src/stores/user.js";
 
 const postsQuery = gql`
-{
-  randomPosts(count: 100) {
-    media {
-      base64
+  {
+    randomPosts(count: 100) {
+      media {
+        base64
+      }
+      id
     }
-    id
   }
-}
 `;
 
 export default function Explore() {
-    const { loading, error, data } = useQuery(postsQuery);
+  const { loading, error, data } = useQuery(postsQuery);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: ${error.message}</p>
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: ${error.message}</p>;
 
-    console.log(data.randomPosts);
-    return (
+  console.log(data.randomPosts);
+  return (
     <>
-        <div className="content">
-            <NavBar />
-            <div className={styles.posts}>
-                { data.randomPosts.map(post => (
-                    <PostCover post={post} key={post.id} />
-                )) }
-            </div>
+      <div className="content">
+        <NavBar />
+        <div className={styles.posts}>
+          {data.randomPosts.map((post) => (
+            <PostCover post={post} key={post.id} />
+          ))}
         </div>
-        <Footer />
+      </div>
+      <Footer />
     </>
-    );
+  );
 }

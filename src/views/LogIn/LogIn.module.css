@@ -1,41 +1,42 @@
 .login {
-    display: flex;
-    justify-content: center;
-    margin-top: 92px;
+  display: flex;
+  justify-content: center;
+  margin-top: 92px;
 }
 
 .login > form {
-    margin-left: 32px;
-    width: 350px;
-    padding: 42px 24px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    border-radius: 1px;
-    border: 1px solid #DBDBDB;
+  margin-left: 32px;
+  width: 350px;
+  padding: 42px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  border-radius: 1px;
+  border: 1px solid #dbdbdb;
 }
 
-.login > form > input[type="text"], .login > form > input[type="password"] {
-    width: 258px;
-    height: 36px;
-    padding-left: 8px;
-    outline: none;
-    border: 1px solid #DBDBDB;
-    border-radius: 1px;
-    font-size: 12px;
-    margin-bottom: 8px;
+.login > form > input[type="text"],
+.login > form > input[type="password"] {
+  width: 258px;
+  height: 36px;
+  padding-left: 8px;
+  outline: none;
+  border: 1px solid #dbdbdb;
+  border-radius: 1px;
+  font-size: 12px;
+  margin-bottom: 8px;
 }
 
 .login > form > button[type="submit"] {
-    width: 258px;
-    height: 36px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    background-color: #3897f0;
-    margin-top: 8px;
-    border: none;
+  width: 258px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background-color: #3897f0;
+  margin-top: 8px;
+  border: none;
 }

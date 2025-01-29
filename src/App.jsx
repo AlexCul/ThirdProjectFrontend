@@ -1,4 +1,4 @@
-import './App.css'
+import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -18,7 +18,10 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/post/creator" element={<PostCreator />}></Route>
-            <Route path="/profile/:nick/edit" element={<ProfileEditor />}></Route>
+            <Route
+              path="/profile/:nick/edit"
+              element={<ProfileEditor />}
+            ></Route>
             <Route path="/profile/:nick" element={<Profile />}></Route>
             <Route path="/explore" element={<Explore />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
@@ -30,5 +33,4 @@ export default function App() {
       </main>
     </>
   );
-};
-
+}

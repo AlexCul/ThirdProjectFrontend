@@ -14,50 +14,60 @@ import useUserStore from "/src/stores/user.js";
 import { useEffect } from "react";
 
 const logInMutation = gql`
-mutation ($nickname: String!, $password: String!) {
+  mutation ($nickname: String!, $password: String!) {
     login(nickname: $nickname, password: $password) {
-        status
-        token
+      status
+      token
     }
-}
+  }
 `;
 
 export default function LogIn() {
-    const set = useUserStore((state) => state.setJwtToken);
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
-    const navigate = useNavigate();
+  const set = useUserStore((state) => state.setJwtToken);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
 
-    const [ logIn, { loading, error, data } ] = useMutation(logInMutation);
+  const [logIn, { loading, error, data }] = useMutation(logInMutation);
 
-    // if (loading) return <p>Loading...</p>;
-    // if (error) return <p>Error: ${error.message}</p>
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error: ${error.message}</p>
 
-    useEffect(() => {
-        if (data?.login?.status === 200) {
-            set(data.login.token);
-            navigate("/explore");
-        } else if (data) {
-            alert("Failed, some of your data is wrong");
-        }
-    }, [data, set, navigate]);
+  useEffect(() => {
+    if (data?.login?.status === 200) {
+      set(data.login.token);
+      navigate("/explore");
+    } else if (data) {
+      alert("Failed, some of your data is wrong");
+    }
+  }, [data, set, navigate]);
 
-    const handleLogin = (user) => {
-        logIn({ variables: user });
-    };
+  const handleLogin = (user) => {
+    logIn({ variables: user });
+  };
 
-    return (
-        <div className={styles.login}>
-        <img src={Phones} alt="" />
-        <form onSubmit={handleSubmit(handleLogin)}>
-            <img src={Logo} alt="" />
-            <input type="text" placeholder="Nickname" {...register("nickname", { required: "It's required" })} />
-            <input type="password" placeholder="Password" {...register("password", { required: "It's required" })} />
-            <button type="submit" disabled={loading}>Log in</button>
-        </form>
-        </div>
-    );
-};
+  return (
+    <div className={styles.login}>
+      <img src={Phones} alt="" />
+      <form onSubmit={handleSubmit(handleLogin)}>
+        <img src={Logo} alt="" />
+        <input
+          type="text"
+          placeholder="Nickname"
+          {...register("nickname", { required: "It's required" })}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          {...register("password", { required: "It's required" })}
+        />
+        <button type="submit" disabled={loading}>
+          Log in
+        </button>
+      </form>
+    </div>
+  );
+}

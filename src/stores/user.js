@@ -8,13 +8,13 @@ const useUserStore = create(
     persist(
       immer((set) => ({
         user: {
-            jwt: "null",
+          jwt: "null",
         },
 
         setJwtToken: (token) => {
-            set((state) => {
-                state.user.jwt = token;
-            });
+          set((state) => {
+            state.user.jwt = token;
+          });
         },
       })),
       {

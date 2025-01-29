@@ -1,28 +1,28 @@
 .error {
-    display: flex;
-    margin-top: 92px;
-    margin-left: 120px;
+  display: flex;
+  margin-top: 92px;
+  margin-left: 120px;
 }
 
 .error > .text {
-    margin-top: 32px;
-    margin-left: 40px;
+  margin-top: 32px;
+  margin-left: 40px;
 }
 
 .error > .text > h3 {
-    font-size: 36px;
-    font-weight: 700;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .error > .text > p {
-    font-size: 16px;
-    font-weight: 600;
-    color: #737373;
-    margin-top: 10px;
-    width: 475px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #737373;
+  margin-top: 10px;
+  width: 475px;
 }
 
 .error > img {
-    width: 301px;
-    height: 460px;
+  width: 301px;
+  height: 460px;
 }

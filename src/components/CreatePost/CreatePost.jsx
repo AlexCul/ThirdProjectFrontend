@@ -7,8 +7,18 @@ import { useState } from "react";
 import useUserStore from "/src/stores/user.js";
 
 const CREATE_POST_MUTATION = gql`
-  mutation CreatePost($token: String!, $title: String!, $media: [String!]!, $description: String) {
-    createPost(token: $token, title: $title, media: $media, description: $description) {
+  mutation CreatePost(
+    $token: String!
+    $title: String!
+    $media: [String!]!
+    $description: String
+  ) {
+    createPost(
+      token: $token
+      title: $title
+      media: $media
+      description: $description
+    ) {
       id
     }
   }
@@ -16,7 +26,8 @@ const CREATE_POST_MUTATION = gql`
 
 export default function CreatePostForm() {
   const { register, handleSubmit, setValue } = useForm();
-  const [createPost, { loading, error, data }] = useMutation(CREATE_POST_MUTATION);
+  const [createPost, { loading, error, data }] =
+    useMutation(CREATE_POST_MUTATION);
   const jwt = useUserStore((state) => state.user.jwt);
   const [avatar64Base, setAvatar64Base] = useState("");
 
@@ -39,22 +50,35 @@ export default function CreatePostForm() {
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file && file.type === "image/png") {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setAvatar64Base(reader.result);
-        };
-        reader.readAsDataURL(file);
-        alert(avatar64Base);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatar64Base(reader.result);
+      };
+      reader.readAsDataURL(file);
+      alert(avatar64Base);
     } else {
-        alert("Only PNG images are allowed.");
+      alert("Only PNG images are allowed.");
     }
   };
 
-
   return (
-    <div style={{ padding: "1rem", border: "1px solid #ccc", borderRadius: "8px", width: "24rem" }}>
-      <h2 style={{ fontSize: "1.25rem", fontWeight: "600", marginBottom: "1rem" }}>Create a Post</h2>
-      <form onSubmit={handleSubmit(onSubmit)} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+    <div
+      style={{
+        padding: "1rem",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        width: "24rem",
+      }}
+    >
+      <h2
+        style={{ fontSize: "1.25rem", fontWeight: "600", marginBottom: "1rem" }}
+      >
+        Create a Post
+      </h2>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}
+      >
         <input type="text" placeholder="Title" {...register("title")} />
         <input type="file" accept="image/png" onChange={handleImageUpload} />
         <textarea placeholder="Description" {...register("description")} />
@@ -67,4 +91,3 @@ export default function CreatePostForm() {
     </div>
   );
 }
-
