@@ -1,4 +1,4 @@
-Запуск с Dockerfile:
+Run from the Dockerfile:
 
 `docker build -t my-frontend .`
 
